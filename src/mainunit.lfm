@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 420
+  Left = 654
   Height = 362
-  Top = 180
+  Top = 282
   Width = 661
   ActiveControl = BtnRun
   Caption = 'Lazarus PolicyKit Demo'

@@ -86,12 +86,39 @@ implementation
 procedure TMainForm.BtnRunClick(Sender: TObject);
 var
   Process: TProcess;
+  CmdSplitter: TStringList;
+  CmdSplitterIdx: Integer;
 begin
-  Process := TProcess.Create(nil);
-  Process.CommandLine := EdtCommand.Text;
-  Process.Options := [poWaitOnExit, poUsePipes, poStdErrToOutPut];
-  Process.Execute;
-  MmoOutput.Lines.LoadFromStream(Process.Output);
+  // Create string list instance.
+  CmdSplitter := TStringList.Create;
+  // Break the command apart into the executable and its parameters.
+  CommandToList(EdtCommand.Text, CmdSplitter);
+  // Only continue if the command is not empty.
+  if (CmdSplitter.Count > 0) then
+  begin
+    // Create the process instance.
+    Process := TProcess.Create(nil);
+    // Store the executable.
+    Process.Executable := CmdSplitter[0];
+    // Store the parameters, if any.
+    if CmdSplitter.Count > 1 then
+    begin
+      for CmdSplitterIdx := 1 to (CmdSplitter.Count - 1) do
+      begin
+        Process.Parameters.Add(CmdSplitter[CmdSplitterIdx]);
+      end;
+    end;
+    // Set the process options.
+    Process.Options := [poWaitOnExit, poUsePipes, poStdErrToOutPut];
+    // Execute the command.
+    Process.Execute;
+    // Show the command output in the memo.
+    MmoOutput.Lines.LoadFromStream(Process.Output);
+    // Release the process instance.
+    Process.Free;
+  end;
+  // Release the string list.
+  CmdSplitter.Free;
 end; //*** end of BtnRunClick ***
 
 end.
