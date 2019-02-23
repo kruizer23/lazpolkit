@@ -1,0 +1,8 @@
+object MainForm: TMainForm
+  Left = 420
+  Height = 362
+  Top = 180
+  Width = 674
+  Caption = 'Lazarus PolicyKit Demo'
+  LCLVersion = '1.8.2.0'
+end

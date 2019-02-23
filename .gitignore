@@ -1,0 +1,5 @@
+src/lazpolkit
+src/lazpolkit.lps
+src/lazpolkit.res
+src/lazpolkit.dbg
+src/lib/*
