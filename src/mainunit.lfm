@@ -2,7 +2,68 @@ object MainForm: TMainForm
   Left = 420
   Height = 362
   Top = 180
-  Width = 674
+  Width = 661
+  ActiveControl = BtnRun
   Caption = 'Lazarus PolicyKit Demo'
+  ClientHeight = 362
+  ClientWidth = 661
+  Position = poScreenCenter
   LCLVersion = '1.8.2.0'
+  object GbxInput: TGroupBox
+    Left = 0
+    Height = 73
+    Top = 0
+    Width = 661
+    Align = alTop
+    Caption = 'Input'
+    ClientHeight = 56
+    ClientWidth = 659
+    TabOrder = 0
+    object LblCommand: TLabel
+      Left = 16
+      Height = 16
+      Top = 18
+      Width = 61
+      Caption = 'Command'
+      ParentColor = False
+    end
+    object EdtCommand: TEdit
+      Left = 88
+      Height = 28
+      Top = 15
+      Width = 474
+      TabOrder = 0
+      Text = 'ls /root'
+    end
+    object BtnRun: TButton
+      Left = 570
+      Height = 28
+      Top = 15
+      Width = 75
+      Caption = 'Run'
+      Default = True
+      OnClick = BtnRunClick
+      TabOrder = 1
+    end
+  end
+  object GbxOutput: TGroupBox
+    Left = 0
+    Height = 289
+    Top = 73
+    Width = 661
+    Align = alClient
+    Caption = 'Output'
+    ClientHeight = 272
+    ClientWidth = 659
+    TabOrder = 1
+    object MmoOutput: TMemo
+      Left = 0
+      Height = 272
+      Top = 0
+      Width = 659
+      Align = alClient
+      ReadOnly = True
+      TabOrder = 0
+    end
+  end
 end

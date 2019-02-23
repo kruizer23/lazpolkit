@@ -38,14 +38,24 @@ interface
 // Includes
 //***************************************************************************************
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls, Process;
 
 
 //***************************************************************************************
 // Type Definitions
 //***************************************************************************************
 type
+
+  { TMainForm }
+
   TMainForm = class(TForm)
+    BtnRun: TButton;
+    EdtCommand: TEdit;
+    GbxInput: TGroupBox;
+    GbxOutput: TGroupBox;
+    LblCommand: TLabel;
+    MmoOutput: TMemo;
+    procedure BtnRunClick(Sender: TObject);
   private
 
   public
@@ -63,6 +73,26 @@ var
 implementation
 
 {$R *.lfm}
+
+{ TMainForm }
+
+//***************************************************************************************
+// NAME:           BtnRunClick
+// PARAMETER:      Sender Source of the event.
+// RETURN VALUE:   none
+// DESCRIPTION:    Event handler that gets called when the button is clicked.
+//
+//***************************************************************************************
+procedure TMainForm.BtnRunClick(Sender: TObject);
+var
+  Process: TProcess;
+begin
+  Process := TProcess.Create(nil);
+  Process.CommandLine := EdtCommand.Text;
+  Process.Options := [poWaitOnExit, poUsePipes, poStdErrToOutPut];
+  Process.Execute;
+  MmoOutput.Lines.LoadFromStream(Process.Output);
+end; //*** end of BtnRunClick ***
 
 end.
 //******************************** end of mainunit.pas **********************************
