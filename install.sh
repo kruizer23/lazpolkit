@@ -17,8 +17,12 @@ done
 #
 mkdir -p $DESTDIR/usr/bin
 cp src/lazpolkit $DESTDIR/usr/bin/
+cp src/lazpolkit-pkexec $DESTDIR/usr/bin/
 mkdir -p $DESTDIR/usr/share/lazpolkit
 cp src/lazpolkit.ico $DESTDIR/usr/share/lazpolkit/
+mkdir -p $DESTDIR/usr/share/polkit-1/actions/
+cp src/org.lazpolkit.root.policy $DESTDIR/usr/share/polkit-1/actions/
 mkdir -p $DESTDIR/usr/share/applications
 cp src/lazpolkit.desktop $DESTDIR/usr/share/applications/
+cp src/lazpolkit-pkexec.desktop $DESTDIR/usr/share/applications/
 

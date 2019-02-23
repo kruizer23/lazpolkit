@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=LazPolKit (as root)
+Categories=Utility;
+Comment=Lazarus application with PolicyKit admin privileges
+Exec=/bin/sh /usr/bin/lazpolkit-pkexec
+Icon=/usr/share/lazpolkit/lazpolkit.ico
+Terminal=false
