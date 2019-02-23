@@ -1,7 +1,9 @@
 # LazPolKit
 LazPolKit is an example Lazarus GUI application to demonstrate how to run a Lazarus application on GNU/Linux with administrative rights. The application makes use of [PolicyKit](https://www.freedesktop.org/wiki/Software/polkit/) to invoke a password dialog upon startup for obtaining administrative privileges. 
 
-PolicyKit (or PolKit) is a component for controlling system-wide privileges in Unix-like operating systems. It is installed by default on most modern GNU/Linux distributions.
+PolicyKit (or PolKit) is a component for controlling system-wide privileges in Unix-like operating systems. It is installed by default on modern GNU/Linux distributions.
+
+Using this example application as a reference, you can easily add PolicyKit functionality to your own Lazarus application in order to obtain administrative privileges.
 
 ## Prerequisites
 
@@ -23,7 +25,7 @@ To remove LazPolKit, you can run:
 
 ## Usage
 
-After installation, two executables are available in /usr/bin: `lazpolkit` and `lazpolkit-pkexec`. Both executables run the LazPolKit application. The first one runs with normal user privileges and the latter one with root privileges with the help of PolicyKit.
+After installation, two executables are available in "/usr/bin": `lazpolkit` and `lazpolkit-pkexec`. Both executables run the LazPolKit application. The first one runs with normal user privileges and the latter one with root privileges with the help of PolicyKit.
 
 The LazPolKit application is a GUI application that allows you to run a command and show the output. By default the `ls /root` command is configured. This command requires administrative privileges, which makes it an ideal test case.
 
@@ -31,7 +33,7 @@ First, start `lazpolkit` and click the "Run"-button. You'll see the following ou
 
 ![alt text](docs/images/lazpolkit_error.png "Running LazPolKit as the normal user")
 
-Next, start `lazpolkit-pkexec`. This time you get prompted to enter the root password to execute the application with administrative privileges before the application starts. Once it started, click the "Run"-button again. Now you'll see in the output that the command executed successfully:
+Next, start `lazpolkit-pkexec`. This time you get prompted to enter the root password to execute the application with administrative privileges. Once it started, click the "Run"-button again. Now you'll see in the output that the command executed successfully:
 
 ![alt text](docs/images/lazpolkit_okay.png "Running LazPolKit as the root user")
 
@@ -42,7 +44,7 @@ The above demonstration proves that you can in fact run a Lazarus application wi
 pkexec "/usr/bin/lazpolkit" "$@"
 ```
 
-For this to work, a PolicyKit related configuration file `org.lazpolkit.root.policy` was copied to the `/usr/share/polkit-1/actions/` directory during the installation. Its contents are:
+For this to work, a PolicyKit related configuration file `org.lazpolkit.root.policy` was copied to the "/usr/share/polkit-1/actions/"-directory during the installation. Its contents are:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -71,7 +73,7 @@ For this to work, a PolicyKit related configuration file `org.lazpolkit.root.pol
 </policyconfig>
 ```
 
-The following references proved useful when developing LazPolKit:
+The following links proved useful when developing LazPolKit:
 
 * [https://askubuntu.com/questions/641593/pkexec-command-in-a-desktop-file](https://askubuntu.com/questions/641593/pkexec-command-in-a-desktop-file)
 * [http://forum.lazarus.freepascal.org/index.php?topic=14479.15](http://forum.lazarus.freepascal.org/index.php?topic=14479.15)
